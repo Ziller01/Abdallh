@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Amaro';
+    font-display: swap;
+    src: local('Inter Regular'), local('Inter-Regular'),
+        url('./fonts/Amaro/Amaro.woff2') format('woff2');
+}
+
+@theme {
+    --default-font-family: var(--font-en-sans);
+
+    /* ====== FONTS ====== */
+    --font-en-sans: 'Inter', system-ui, sans-serif;
+    --font-en-heading: 'Poppins', 'Montserrat', sans-serif;
+    --font-ar-sans: 'Tajawal', 'Cairo', sans-serif;
+    --font--ar-heading: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+    --font-Amaro: 'Amaro';
+
+    /* ====== COLORS ====== */
+    --color-bg: #000000;
+    --color-fg: #ffffff;
+    --color-muted: #a1a1a1;
+    --color-border: rgba(255, 255, 255, 0.06);
+    --color-card: #0a0a0a;
+    --color-accent: #e5e5e5;
+
+    /* ====== SHADOWS ====== */
+    --shadow-all-xs: 0 0 2px 0 rgba(255, 255, 255, 0.05);
+    --shadow-all-sm: 0 0 4px 0 rgba(255, 255, 255, 0.07);
+    --shadow-all: 0 0 8px -2px rgba(255, 255, 255, 0.08);
+    --shadow-all-md: 0 0 15px -4px rgba(255, 255, 255, 0.1);
+    --shadow-all-lg: 0 0 25px -6px rgba(255, 255, 255, 0.15);
+    --shadow-all-xl: 0 0 40px -8px rgba(255, 255, 255, 0.2);
+    --shadow-all-2xl: 0 0 60px -10px rgba(255, 255, 255, 0.25);
+
+    /* ====== RADIUS ====== */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* ====== CONTAINER WIDTH ====== */
+    --container-width: 1100px;
+}
+
+
+@layer utilities {
+    .grid-bg {
+        background-position: center;
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        background-size: 60px 60px;
+        transition: background 0.2s ease;
+    }
+
+    .grid-bg-move {
+        background-position: center;
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+        background-size: 60px 60px;
+        transition: background 0.2s ease;
+        --tw-mask-radial-position: var(--x, 50%) var(--y, 50%) !important;
+    }
+
+}
