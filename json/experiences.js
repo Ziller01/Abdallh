@@ -1,4 +1,4 @@
-[
+const experiences = [
   {
     "company": "Madar Group Egypt",
     "title": "Sales Automation Section Head",
