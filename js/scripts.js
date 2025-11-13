@@ -25,7 +25,6 @@ ScrollTrigger.create({
     onEnter: () => {
         about_text_typewriter.start();
         sphereAnimation()
-        // spaceAnimation()
     },
 });
 
@@ -42,7 +41,7 @@ function sphereAnimation() {
             for (let i = 0; i < pathLength; i++) {
                 aimations.push(anime({
                     targets: spherePathEls[i],
-                    stroke: { value: ['rgba(255,255,255,0.2)', 'rgba(255,255,255,0.1)'], duration: 500 },
+                    stroke: { value: ['rgba(255,255,255,0.3)', 'rgba(255,255,255,0.2)'], duration: 500 },
                     translateX: [2, -4],
                     translateY: [2, -4],
                     easing: 'easeOutQuad',
@@ -101,7 +100,7 @@ function sphereAnimation() {
 
 
 const experiencesCardGroup = document.querySelector("#experiences #timeline #card-group");
-experiences.toReversed().map((ex, index) => {
+experiences.map((ex, index) => {
     const isLeft = index % 2 === 0;
     experiencesCardGroup.innerHTML += `
     <div id="card" class="w-full lg:max-w-7xl relative ${isLeft ? 'pe-10 justify-start' : 'ps-10 justify-end'} flex items-center min-h-[40vh]">
