@@ -13,8 +13,9 @@
     --font-en-sans: 'Inter', system-ui, sans-serif;
     --font-en-heading: 'Poppins', 'Montserrat', sans-serif;
     --font-ar-sans: 'Tajawal', 'Cairo', sans-serif;
-    --font--ar-heading: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+    --font-ar-heading: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
     --font-Amaro: 'Amaro';
+    --font-Montserrat: 'Montserrat';
     
     --default-font-family: var(--font-en-sans);
 
