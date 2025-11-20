@@ -3,6 +3,26 @@
 AOS.init();
 gsap.registerPlugin(ScrollTrigger);
 
+//------------------------------------------------------ Only Wide Screen
+
+const _onlyWideScreen = document.getElementById("onlyWideScreen");
+const html = document.documentElement
+
+function onlyWideScreen() {
+    const [w, h] = [window.innerWidth, window.innerHeight];
+    if (w > h) { // PC
+        // html.classList.add("overflow-hidden");
+        _onlyWideScreen.style.display = 'none'
+    } else { // Phone
+        scrollTo(0, 0)
+        // html.classList.remove("overflow-hidden");
+        _onlyWideScreen.style.display = 'flex'
+    }
+}
+
+window.addEventListener("load", () => { onlyWideScreen() })
+window.addEventListener("resize", () => { onlyWideScreen() })
+
 //------------------------------------------------------ Header
 
 const _hero = document.getElementById("hero");
@@ -319,6 +339,53 @@ if (_skills) {
 }
 
 //------------------------------------------------------ Projects
+
+const _projects = document.getElementById("projects");
+if (_projects) {
+    const ring = document.getElementById("ring");
+
+    let cards = [];
+
+    projects.forEach((p, i) => {
+        const card = document.createElement("div");
+        card.className = `min-w-md ${i % 2 === 0 ? 'lg:mb-50' : 'lg:mt-50'}  backdrop-blur-xs bg-white/5 text-white p-5 rounded-xl shadow-xl flex flex-col gap-2.5`;
+
+        card.innerHTML = `
+            <div class="flex items-center gap-3">
+                <img src="${p.companyLogo ?? ""}" class="w-10 h-10 rounded-full object-cover" onerror="this.onerror=null; this.src='/media/linkedin.png';" />
+                <div>
+                    <h2 class="font-bold text-lg leading-tight">${p.title}</h2>
+                    <p class="text-xs opacity-70">${p.company ?? ""}</p>
+                </div>
+            </div>
+            <p class="text-sm opacity-80 line-clamp-4 mt-2">${p.description ?? ""}</p>
+            <div class="flex flex-wrap gap-2">
+                ${p.skills && p.skills.map(skill => `<span class="px-2 py-1 text-xs rounded-full bg-white/10 border border-white/20">${skill}</span>`).join('')}
+            </div>
+            <p class="text-xs opacity-60 mt-auto">${p.date ?? ""}</p>
+        `;
+
+        ring.appendChild(card)
+        cards.push(card);
+
+    });
+
+    // cards.forEach((card, i) => {
+    //     const cardMove = gsap.timeline({
+    //         scrollTrigger: {
+    //             trigger: card,
+    //             start: "left 70%",
+    //             end: "left 20%",
+    //             scrub: 1,
+    //             containerAnimation: scrollTween,
+    //             markers: true
+    //         },
+    //     });
+    //     cardMove.to(card, { scale: 2, rotation: 360, duration: 3 });
+    // })
+
+}
+
 
 //------------------------------------------------------ Recommendations
 //------------------------------------------------------ Contact

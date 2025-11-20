@@ -8,7 +8,7 @@
 }
 
 @theme {
-    
+
     /* ====== FONTS ====== */
     --font-en-sans: 'Inter', system-ui, sans-serif;
     --font-en-heading: 'Poppins', 'Montserrat', sans-serif;
@@ -16,7 +16,7 @@
     --font-ar-heading: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
     --font-Amaro: 'Amaro';
     --font-Montserrat: 'Montserrat';
-    
+
     --default-font-family: var(--font-en-sans);
 
     /* ====== COLORS ====== */
@@ -70,8 +70,12 @@
         backface-visibility: hidden;
     }
 
-    /* =============== Experience =============== */
+    /* =============== Experiences =============== */
 
+    .scrollbar-view::-webkit-scrollbar {
+        display: block;
+    }
+    
     .scrollbar-none::-webkit-scrollbar {
         display: none;
     }
@@ -84,6 +88,7 @@
         background: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
     }
+
     .scrollbar-fit::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.2);
     }
@@ -92,5 +97,7 @@
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: white;
     }
+
+    /* =============== Projects =============== */
 
 }
