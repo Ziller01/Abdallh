@@ -11,11 +11,10 @@ const html = document.documentElement
 function onlyWideScreen() {
     const [w, h] = [window.innerWidth, window.innerHeight];
     if (w > h) { // PC
-        // html.classList.add("overflow-hidden");
+        html.classList.remove("overflow-hidden");
         _onlyWideScreen.style.display = 'none'
     } else { // Phone
-        scrollTo(0, 0)
-        // html.classList.remove("overflow-hidden");
+        html.classList.add("overflow-hidden");
         _onlyWideScreen.style.display = 'flex'
     }
 }
@@ -313,11 +312,11 @@ if (_skills) {
 
         // parent
         const point = document.createElement("div");
-        point.className =
-            "absolute cursor-pointer opacity-20 min-w-fit w-0 hover:opacity-100 whitespace-nowrap hover:w-[3000px] max-w-fit flex justify-center items-center group p-2 border duration-300 overflow-hidden rounded-full";
+        point.className = `absolute cursor-pointer opacity-20 min-w-fit w-0 hover:opacity-100 whitespace-nowrap hover:w-[3000px] max-w-fit flex justify-center items-center group p-2 border duration-300 overflow-hidden rounded-full`;
+        if (x > 50) point.dir = "rtl";
 
         // random position
-        point.style.left = x + "%";
+        x < 50 ? point.style.left = x + "%" : point.style.right = (100 - x) + "%";
         point.style.top = y + "%";
 
         // small circle
@@ -348,17 +347,17 @@ if (_projects) {
 
     projects.forEach((p, i) => {
         const card = document.createElement("div");
-        card.className = `min-w-md ${i % 2 === 0 ? 'lg:mb-50' : 'lg:mt-50'}  backdrop-blur-xs bg-white/5 text-white p-5 rounded-xl shadow-xl flex flex-col gap-2.5`;
+        card.className = `min-w-md ${i % 2 === 0 ? 'lg:-translate-y-1/4' : 'lg:translate-y-1/4'}  h-full lg:min-h-[40vh] lg:h-[40vh] backdrop-blur-xs bg-white/5 text-white p-5 rounded-xl shadow-xl flex flex-col gap-2.5 lg:gap-5`;
 
         card.innerHTML = `
             <div class="flex items-center gap-3">
-                <img src="${p.companyLogo ?? ""}" class="w-10 h-10 rounded-full object-cover" onerror="this.onerror=null; this.src"../media/linkedin.png';" />
+                <img src="${p.companyLogo ?? ""}" class="w-10 h-10 rounded-full object-cover" onerror="this.onerror=null; this.src='../media/linkedin.png';" />
                 <div>
                     <h2 class="font-bold text-lg leading-tight">${p.title}</h2>
                     <p class="text-xs opacity-70">${p.company ?? ""}</p>
                 </div>
             </div>
-            <p class="text-sm opacity-80 line-clamp-4 mt-2">${p.description ?? ""}</p>
+            <p class="text-sm opacity-80 line-clamp-4">${p.description ?? ""}</p>
             <div class="flex flex-wrap gap-2">
                 ${p.skills && p.skills.map(skill => `<span class="px-2 py-1 text-xs rounded-full bg-white/10 border border-white/20">${skill}</span>`).join('')}
             </div>
@@ -385,7 +384,6 @@ if (_projects) {
     // })
 
 }
-
 
 //------------------------------------------------------ Recommendations
 //------------------------------------------------------ Contact
