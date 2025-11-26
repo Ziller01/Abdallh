@@ -111,6 +111,7 @@ if (_about) {
 }
 
 //------------------------------------------------------ Experience
+
 const _experiences = document.getElementById("experiences");
 if (_experiences) {
     const experiencesCardGroup = document.querySelector("#experiences #timeline #card-group");
@@ -157,7 +158,6 @@ if (_experiences) {
             trigger: '#experiences',
             end: 'bottom 50%',
             scrub: 1,
-            // markers: true,
         }
     });
 
@@ -343,16 +343,16 @@ if (_recommendations) {
 
     const cardsContainer = document.createElement("div");
     cardsContainer.id = "recommendations-cards";
-    cardsContainer.className = "flex gap-8 px-10";
+    cardsContainer.className = "absolute w-1/2 h-full flex flex-col gap-10 items-center p-10 overflow-y-auto scrollbar-fit mask-y-from-90% mask-y-to-100%";
 
     recommendations.forEach((rec, i) => {
         const card = document.createElement("div");
-        card.className = `recommendation-card min-w-[350px] md:min-w-[450px] h-[65vh] backdrop-blur-md bg-linear-to-br from-white/10 to-white/5 border border-white/20 p-8 rounded-3xl flex flex-col gap-6 relative overflow-hidden group hover:border-white/40 transition-all duration-500 shadow-2xl`;
+        card.className = `w-[70%] max-w-2xl min-h-fit backdrop-blur-md bg-black border border-white/20 p-8 first:mt-[15vh] rounded-3xl flex flex-col gap-6 overflow-hidden group hover:border-white/40 transition-all duration-500 shadow-2xl`;
+        card.style.zIndex = recommendations.length + i;
+        // card.style.top = `${i*10}px`;
 
-        card.innerHTML = `
-            <div class="absolute -right-20 -top-20 w-60 h-60 bg-linear-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
-            
-            <div class="flex items-start gap-4 z-10">
+        card.innerHTML = `            
+            <div class="flex items-start gap-5 z-10">
                 <img src="${rec.imageUrl}" alt="${rec.name}" class="w-20 h-20 rounded-full object-cover border-4 border-white/30 shadow-lg shrink-0" onerror="this.src='https://via.placeholder.com/100'"/>
                 <div class="grow">
                     <h3 class="text-2xl font-bold text-white mb-1">${rec.name}</h3>
@@ -360,7 +360,7 @@ if (_recommendations) {
                 </div>
             </div>
 
-            <div class="grow z-10 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-2">
+            <div class="grow z-10 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-2 max-h-[40vh]">
                 <div class="flex items-start gap-2 mb-3">
                     <i class="fas fa-quote-left text-3xl text-white/30 mt-1"></i>
                 </div>
@@ -382,47 +382,6 @@ if (_recommendations) {
     });
 
     contentDiv.appendChild(cardsContainer);
-
-    let recommendations_tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#recommendations",
-            start: "top top",
-            end: () => `+=${cardsContainer.scrollWidth}`,
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-        }
-    });
-
-    recommendations_tl.to(cardsContainer, {
-        x: () => -(cardsContainer.scrollWidth - window.innerWidth + 100),
-        ease: "none"
-    });
-
-    const recCards = document.querySelectorAll(".recommendation-card");
-    recCards.forEach((card, i) => {
-        gsap.fromTo(card,
-            {
-                opacity: 0,
-                y: 50,
-                rotateX: -15
-            },
-            {
-                opacity: 1,
-                y: 0,
-                rotateX: 0,
-                duration: 0.6,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: card,
-                    start: "left 90%",
-                    end: "left 60%",
-                    scrub: 1,
-                    containerAnimation: recommendations_tl,
-                }
-            }
-        );
-    });
 }
 
 //------------------------------------------------------ Contact
@@ -436,8 +395,6 @@ if (_contact) {
         start: "top 70%",
         onEnter: () => {
             if (!confettiFired && typeof confetti === 'function') {
-                // confettiFired = true;
-
                 const duration = 3 * 1000;
                 const animationEnd = Date.now() + duration;
                 const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
