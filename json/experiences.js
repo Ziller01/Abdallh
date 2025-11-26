@@ -1,4 +1,32 @@
 const experiences = [
+    {
+    "company": "Holw Elsham",
+    "title": "Sales Technology Manager",
+    "type": "Full-time",
+    "location": "Cairo, Egypt",
+    "work_mode": "Hybrid",
+    "start_date": "2025-10",
+    "end_date": "Present",
+    "duration": "",
+    "skills": [
+      "Technology Implementation",
+      "User Training",
+      "Application Support Management",
+      "Project Delivery",
+      "Documentation",
+      "Technical Specs",
+      "Project Planning",
+      "Business Process",
+      "Business Intelligence (BI)",
+      "Digital Transformation",
+      "Salesforce Automation",
+      "Microsoft Power BI",
+      "Leadership",
+      "SQL",
+      "Vendor Management"
+      "Team Leading",
+    ]
+  },
   {
     "company": "Madar Group Egypt",
     "title": "Sales Automation Section Head",
