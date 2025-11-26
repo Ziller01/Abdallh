@@ -54,13 +54,6 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 
-    <!-- Animejs -->
-    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
-    <script src="https://codepen.io/juliangarnier/pen/75efae7724dbc3c055e918057fc4aca5.js"></script>
-
-    <!-- Threejs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <!-- Typewriter -->
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   </head>
@@ -91,7 +84,7 @@
 
         <!-- Image -->
         <div id="hero-img-wrapper" class="max-md:w-full flex justify-center items-center">
-          <img data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" id="hero-img" src="./media/hero_logo.png" alt="hero image" class="max-sm:max-h-[40vh] h-auto lg:max-h-[80vh] w-auto rounded-full object-cover opacity-90 0mask-radial-from-70%" />
+          <img data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" id="hero-img" src="./media/hero_logo.png" alt="hero image" class="max-sm:max-h-[40vh] h-auto lg:max-h-[80vh] w-auto rounded-full object-cover opacity-90 mask-radial-from-70%" />
         </div>
       </div>
     </section>
@@ -187,7 +180,7 @@
 
     <!--!------------------ Projects ------------------!-->
 
-    <section id="projects" class="w-full h-[300dvh] 0mt-[100dvh] relative">
+    <section id="projects" class="w-full h-[300dvh] relative">
       <div class="w-full h-screen sticky top-0 flex flex-col justify-center items-center overflow-hidden">
         <!-- Header -->
         <div id="header" class="w-screen top-0 flex flex-col justify-center items-center">
@@ -202,16 +195,14 @@
 
     <!--!------------------ Recommendations ------------------!-->
 
-    <section id="projects" class="w-full h-[300dvh] 0mt-[100dvh] relative">
+    <section id="recommendations" class="w-full h-[300dvh] relative">
       <div class="w-full h-screen sticky top-0 flex flex-col justify-center items-center overflow-hidden">
         <!-- Header -->
         <div id="header" class="w-screen top-0 flex flex-col justify-center items-center">
-          <h1 class="text-[10vw] lg:text-[15vw] font-en-heading font-semibold uppercase tracking-widest opacity-30 leading-none">Projects</h1>
+          <h1 class="text-[7vw] font-en-heading font-semibold uppercase tracking-widest opacity-30 leading-none">Recommendations</h1>
         </div>
         <!-- Content -->
-        <div id="content" class="w-full h-full z-10 flex justify-center items-center overflow-hidden">
-          <div id="ring" class="p-2.5 lg:p-10 h-full flex items-center gap-20 scrollbar-fit scrollbar-none hover:!scrollbar-view overflow-x-auto"></div>
-        </div>
+        <div id="content" class="w-full h-full z-10 flex justify-center items-center overflow-hidden"></div>
       </div>
     </section>
 
@@ -224,6 +215,7 @@
     <script src="./json/experiences.js"></script>
     <script src="./json/skills.js"></script>
     <script src="./json/projects.js"></script>
+    <script src="./json/recommendations.js"></script>
 
     <script src="./js/scripts.js"></script>
 

@@ -56,70 +56,68 @@ if (_about) {
     });
 
     function sphereAnimation() {
+        const sphereEl = document.querySelector('#sphere-animation');
+        const spherePathEls = sphereEl?.querySelectorAll('.sphere path');
 
-        let sphereEl = document.querySelector('#sphere-animation');
-        let spherePathEls = sphereEl?.querySelectorAll('.sphere path');
-        let pathLength = spherePathEls?.length;
-        let aimations = [];
+        if (!spherePathEls || spherePathEls.length === 0) return;
 
-
-        let breathAnimation = anime({
-            begin: function () {
-                for (let i = 0; i < pathLength; i++) {
-                    aimations.push(anime({
-                        targets: spherePathEls[i],
-                        stroke: { value: ['rgba(255,255,255,0.3)', 'rgba(255,255,255,0.2)'], duration: 500 },
-                        translateX: [2, -4],
-                        translateY: [2, -4],
-                        easing: 'easeOutQuad',
-                        autoplay: false
-                    }));
+        // 1. Prepare Breath Animation Tweens
+        // We create a paused tween for each path that defines the "full breath" motion.
+        // We will manually seek these tweens in the ticker loop to match the sine wave formula.
+        const breathTweens = Array.from(spherePathEls).map(el => {
+            return gsap.fromTo(el,
+                {
+                    translateX: 2,
+                    translateY: 2,
+                    stroke: 'rgba(255,255,255,0.3)'
+                },
+                {
+                    translateX: -4,
+                    translateY: -4,
+                    stroke: 'rgba(255,255,255,0.2)',
+                    duration: 1, // Duration is arbitrary since we seek by progress (0-1)
+                    paused: true,
+                    ease: "power2.out" // Matches easeOutQuad
                 }
-            },
-            update: function (ins) {
-                aimations.forEach(function (animation, i) {
-                    let percent = (1 - Math.sin((i * .35) + (.0022 * ins.currentTime))) / 2;
-                    animation.seek(animation.duration * percent);
-                });
-            },
-            duration: Infinity,
-            autoplay: false
+            );
         });
 
-        let introAnimation = anime.timeline({
-            autoplay: false
-        })
-            .add({
-                targets: spherePathEls,
-                strokeDashoffset: {
-                    value: [anime.setDashoffset, 0],
-                    duration: 3900,
-                    easing: 'easeInOutCirc',
-                    delay: anime.stagger(190, { direction: 'reverse' })
-                },
-                duration: 2000,
-                delay: anime.stagger(60, { direction: 'reverse' }),
-                easing: 'linear'
-            }, 0);
+        // 2. Drive Breath Animation with GSAP Ticker
+        // Formula: percent = (1 - Math.sin((i * .35) + (.0022 * ins.currentTime))) / 2;
+        gsap.ticker.add((time, deltaTime, frame) => {
+            // GSAP ticker time is in seconds, convert to ms to match original formula scale
+            const timeInMs = Date.now();
 
-        let shadowAnimation = anime({
-            targets: '#sphereGradient',
-            x1: '25%',
-            x2: '25%',
-            y1: '0%',
-            y2: '75%',
-            duration: 30000,
-            easing: 'easeOutQuint',
-            autoplay: false
-        }, 0);
+            breathTweens.forEach((tween, i) => {
+                const percent = (1 - Math.sin((i * 0.35) + (0.0022 * timeInMs))) / 2;
+                tween.progress(percent);
+            });
+        });
 
-        function init() {
-            introAnimation.play();
-            breathAnimation.play();
-            shadowAnimation.play();
-        }
+        // 3. Intro Animation
+        // Set initial dasharray/offset for drawing effect
+        spherePathEls.forEach(el => {
+            const len = el.getTotalLength();
+            gsap.set(el, { strokeDasharray: len, strokeDashoffset: len });
+        });
 
-        init();
+        gsap.to(spherePathEls, {
+            strokeDashoffset: 0,
+            duration: 3.9,
+            ease: "circ.inOut", // Matches easeInOutCirc
+            stagger: {
+                each: 0.19,
+                from: "end" // Matches direction: 'reverse'
+            }
+        });
+
+        // 4. Shadow Animation
+        gsap.to('#sphereGradient', {
+            attr: { x1: '25%', x2: '25%', y1: '0%', y2: '75%' },
+            duration: 30,
+            ease: "power4.out" // Matches easeOutQuint
+        });
+
 
     }
 }
@@ -162,8 +160,10 @@ if (_experiences) {
 
     const timelineLine = document.querySelector("#experiences #timeline-line");
 
-    timelineLine.style.height = `${experiencesCardGroup.offsetHeight}px`;
-    window.addEventListener('resize', () => { timelineLine.style.height = `${experiencesCardGroup.offsetHeight}px`; })
+    if (timelineLine && experiencesCardGroup) {
+        timelineLine.style.height = `${experiencesCardGroup.offsetHeight}px`;
+        window.addEventListener('resize', () => { timelineLine.style.height = `${experiencesCardGroup.offsetHeight}px`; })
+    }
 
     let experiences_tl = gsap.timeline({
         scrollTrigger: {
@@ -195,9 +195,6 @@ if (_skills) {
     });
 
     skills_tl
-        // .to('#skills #window', { width: '100vw' })
-        // .to('#skills #window', { width: '0vw', height: '100vh' }, "+=5")
-        // .to('#skills #window', { height: 0 }, "myLabel+=1")
         .to('#skills #window', { width: 0, height: '100vh' }, 0)
         .to('#skills #window', { width: '100vw' }, "myLabel>+=1")
         .to('#skills #window', { width: 0, height: '100vh' }, "+=5")
@@ -279,32 +276,36 @@ if (_skills) {
 
     // store placed positions
     const placed = [];
-    const minDistance = 0.05; // %
-
+    const minDistance = 6; // % distance between skills
 
     function addSkills(skill, i) {
-        // random positions
-        let x = 5 + Math.random() * 90;
-        let y = 5 + Math.random() * 90;
+        let x, y;
+        let attempts = 0;
+        const maxAttempts = 50;
+        let collision = true;
 
-        // let passed = false
-        // if (placed.length > 0) {
-        //     for (let pos of placed) {
-        //         console.log(pos);
-        //         if (((x + minDistance) < (pos.x - minDistance) || (x - minDistance) < (pos.x + minDistance)) && ((y + minDistance) < (pos.y - minDistance) || (y - minDistance) < (pos.y + minDistance))) {
-        //         }else{
-        //             passed = true;
-        //             console.log({ x, y }, {pos});
-        //             break
+        // Try to find a non-overlapping position
+        while (collision && attempts < maxAttempts) {
+            x = 5 + Math.random() * 90;
+            y = 5 + Math.random() * 90;
+            collision = false;
 
-        //         };
-        //     }
-        //     if (!passed) {
+            for (let pos of placed) {
+                const dx = x - pos.x;
+                const dy = y - pos.y;
+                // Calculate distance in percentage units (approximate)
+                const distance = Math.sqrt(dx * dx + dy * dy);
 
-        //         return addSkills(skill, i)
-        //     }
-        // }
-        // placed.push({ x, y });
+                if (distance < minDistance) {
+                    collision = true;
+                    break;
+                }
+            }
+            attempts++;
+        }
+
+        // Store the position (even if it overlaps after max attempts, we place it to ensure it appears)
+        placed.push({ x, y });
 
         // parent
         const point = document.createElement("div");
@@ -366,20 +367,6 @@ if (_projects) {
         cards.push(card);
 
     });
-
-    // cards.forEach((card, i) => {
-    //     const cardMove = gsap.timeline({
-    //         scrollTrigger: {
-    //             trigger: card,
-    //             start: "left 70%",
-    //             end: "left 20%",
-    //             scrub: 1,
-    //             containerAnimation: scrollTween,
-    //             markers: true
-    //         },
-    //     });
-    //     cardMove.to(card, { scale: 2, rotation: 360, duration: 3 });
-    // })
 
 }
 
