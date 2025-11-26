@@ -1,5 +1,5 @@
 const experiences = [
-    {
+  {
     "company": "Holw Elsham",
     "title": "Sales Technology Manager",
     "type": "Full-time",
@@ -23,8 +23,8 @@ const experiences = [
       "Microsoft Power BI",
       "Leadership",
       "SQL",
-      "Vendor Management"
-      "Team Leading",
+      "Vendor Management",
+      "Team Leading"
     ]
   },
   {
