@@ -66,7 +66,7 @@ const projects = [
     title: "Yazel Booking",
     date: "August 2022 - January 2023",
     company: "Magnet Media Group",
-    companyLogo: "/media/linkedin.png",
+    companyLogo: "media/linkedin.png",
     description: "managing the team to create a large-scale booking system through Web and mobile applications to provide the end users the ability to book services and give owners better control over Covid regulations and better reach for the customers to present and organize their businesses.",
     skills: [],
     link: "https://partner.yazl.az/login"
@@ -120,7 +120,7 @@ const projects = [
     title: "Darbyat",
     date: "December 2021 - August 2022",
     company: "Magnet Media Group",
-    companyLogo: "/media/linkedin.png",
+    companyLogo: "media/linkedin.png",
     description: "Managed Darbyat project from scratch as the first CRM containing rent and selling units done by ALkatery company in Suadi Arabia. \nintegrated with financial calculation and maintenance services for the residents, and manage the selling and the interest rate of the projects through all phases.\ngiving the best functionality with an easy access interface.",
     skills: [],
     link: "https://darbyat.com/"
@@ -129,7 +129,7 @@ const projects = [
     title: "Alasoom Application",
     date: "January 2021 - August 2022",
     company: "Magnet Media Group",
-    companyLogo: "/media/linkedin.png",
+    companyLogo: "media/linkedin.png",
     description: "Creating a Mobile app associated with the PHP website serving a selling and bedding platform in Saudi Arabia with live streaming functions and easy access to chat and contact the seller.\n\ncontain a lot of discounts and promotions and surving personal and business users.",
     skills: [],
     link: "https://alasoom.com/ar"
