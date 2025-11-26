@@ -318,7 +318,7 @@ if (_projects) {
 
         card.innerHTML = `
             <div class="flex items-center gap-3">
-                <img src="${p.companyLogo ?? ""}" class="w-10 h-10 rounded-full object-cover" onerror="this.onerror=null; this.src='Abdallh/media/linkedin.png';" />
+                <img src="${p.companyLogo ?? ""}" class="w-10 h-10 rounded-full object-cover" onerror="this.onerror=null; this.src='/media/linkedin.png';" />
                 <div>
                     <h2 class="font-bold text-lg leading-tight">${p.title}</h2>
                     <p class="text-xs opacity-70">${p.company ?? ""}</p>
@@ -353,7 +353,7 @@ if (_recommendations) {
 
         card.innerHTML = `            
             <div class="flex items-start gap-5 z-10">
-                <img src="${rec.imageUrl}" alt="${rec.name}" class="w-20 h-20 rounded-full object-cover border-4 border-white/30 shadow-lg shrink-0" onerror="this.src='https://via.placeholder.com/100'"/>
+                <img src="${rec.imageUrl}" alt="${rec.name}" class="w-20 h-20 rounded-full object-cover border-4 border-white/30 shadow-lg shrink-0" onerror="this.onerror=null; this.src='/media/linkedin.png'"/>
                 <div class="grow">
                     <h3 class="text-2xl font-bold text-white mb-1">${rec.name}</h3>
                     <p class="text-xs text-white/70 line-clamp-2 leading-relaxed">${rec.headline}</p>
