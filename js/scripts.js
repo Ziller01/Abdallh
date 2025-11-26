@@ -349,7 +349,6 @@ if (_recommendations) {
         const card = document.createElement("div");
         card.className = `w-[70%] max-w-2xl min-h-fit backdrop-blur-md bg-black border border-white/20 p-8 first:mt-[15vh] rounded-3xl flex flex-col gap-6 overflow-hidden group hover:border-white/40 transition-all duration-500 shadow-2xl`;
         card.style.zIndex = recommendations.length + i;
-        // card.style.top = `${i*10}px`;
 
         card.innerHTML = `            
             <div class="flex items-start gap-5 z-10">
@@ -360,7 +359,7 @@ if (_recommendations) {
                 </div>
             </div>
 
-            <div class="grow z-10 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-2 max-h-[40vh]">
+            <div class="grow z-10 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-2">
                 <div class="flex items-start gap-2 mb-3">
                     <i class="fas fa-quote-left text-3xl text-white/30 mt-1"></i>
                 </div>
