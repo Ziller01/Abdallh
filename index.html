@@ -56,6 +56,9 @@
 
     <!-- Typewriter -->
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   </head>
 
   <body class="bg-black text-white flex flex-col justify-center items-center gap-20 scrollbar-fit">
@@ -202,13 +205,35 @@
           <h1 class="text-[7vw] font-en-heading font-semibold uppercase tracking-widest opacity-30 leading-none">Recommendations</h1>
         </div>
         <!-- Content -->
-        <div id="content" class="w-full h-full z-10 flex justify-center items-center overflow-hidden"></div>
+        <div id="content" class="w-full h-full z-10 flex items-center overflow-hidden"></div>
       </div>
     </section>
 
-    <!--!------------------ More ------------------!-->
+    <!--!------------------ Contact & Footer ------------------!-->
 
-    <section id="more" class="w-full h-screen relative"></section>
+    <section id="contact" class="w-full h-screen relative flex flex-col justify-between bg-black overflow-hidden">
+      <!-- Firework Canvas -->
+      <canvas id="confetti-canvas" class="absolute inset-0 pointer-events-none z-0"></canvas>
+
+      <!-- Contact Content -->
+      <div class="grow flex flex-col justify-center items-center gap-10 z-10">
+        <h2 class="text-6xl lg:text-8xl font-en-heading font-bold uppercase tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white to-white/20">Get In Touch</h2>
+
+        <div class="flex gap-10 text-5xl text-white/50">
+          <a class="transition-all duration-300 hover:scale-125 hover:text-white" target="_blank" href="https://www.linkedin.com/in/abdallah-alsggaf"><i class="fab fa-linkedin"></i></a>
+          <a class="transition-all duration-300 hover:scale-125 hover:text-white" target="_blank" href="https://wa.me/+201146669015"><i class="fab fa-whatsapp"></i></a>
+          <a class="transition-all duration-300 hover:scale-125 hover:text-white" target="_blank" href="https://github.com/ziller01"><i class="fab fa-github"></i></a>
+          <a class="transition-all duration-300 hover:scale-125 hover:text-white" target="_blank" href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+
+      <footer class="w-full p-5">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center p-5 gap-4 border border-white/10 rounded-xl backdrop-blur-sm leading-0">
+          <p class="text-sm text-white/40 font-light">© 2025 Abdallah Alsggaf. All rights reserved.</p>
+          <p class="text-sm text-white/40 font-light">Designed & Built with <span class="text-white">❤</span></p>
+        </div>
+      </footer>
+    </section>
 
     <!--!------------------ Scripts ------------------!-->
 
