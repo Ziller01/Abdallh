@@ -52,20 +52,9 @@
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-
-    <!-- Animejs -->
-    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
-    <script src="https://codepen.io/juliangarnier/pen/75efae7724dbc3c055e918057fc4aca5.js"></script>
-
-    <!-- Threejs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Typewriter -->
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   </head>
 
-  <body class="bg-black text-white flex flex-col justify-center items-center gap-20 scrollbar-fit">
+  <body>
     <!--!------------------ Only Wide Screen ------------------!-->
 
     <section id="onlyWideScreen" class="w-screen h-screen fixed top-0 z-100 bg-black text-neutral-500 flex-col justify-center items-center" style="display: none">
@@ -76,13 +65,13 @@
 
     <section id="hero" class="w-full h-screen relative overflow-hidden">
       <!-- Grid background -->
-      <div class="absolute -z-1 lg:aspect-square inset-0 grid-bg mask-radial-at-bottom-left mask-radial-from-20% mask-radial-to-70% lg:mask-radial-to-50%"></div>
-      <div class="absolute -z-1 lg:aspect-square inset-0 grid-bg-move mask-radial-to-30"></div>
+      <div class="absolute -z-1 md:aspect-square inset-0 grid-bg mask-radial-at-bottom-left mask-radial-from-20% mask-radial-to-70%"></div>
+      <div class="absolute -z-1 md:aspect-square inset-0 grid-bg-move mask-radial-to-30"></div>
 
       <!-- Content -->
-      <div class="container mx-auto h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-20">
+      <div class="container mx-auto h-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-20">
         <!-- Text -->
-        <div id="hero-text" class="flex flex-col justify-center items-center gap-5 lg:items-start text-center lg:text-left">
+        <div id="hero-text" class="flex flex-col justify-center items-center gap-5 md:items-start text-center md:text-left">
           <p data-aos="fade-right" data-aos-duration="750" data-aos-delay="100" class="text-3xl lg:text-3xl 2xl:text-5xl opacity-80 font-Amaro font-thin">Abdallh Alsggaf</p>
           <p data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" class="text-4xl lg:text-5xl 2xl:text-7xl opacity-90 font-en-heading font-semibold">Sales Automation</p>
           <p data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" class="text-4xl lg:text-5xl 2xl:text-7xl opacity-90 font-en-heading font-semibold">& ERP Consultant</p>
@@ -90,8 +79,8 @@
         </div>
 
         <!-- Image -->
-        <div id="hero-img-wrapper" class="max-lg:-order-1 flex justify-center items-center">
-          <img data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" id="hero-img" src="./media/hero_logo.png" alt="hero image" class="max-h-[40vh] lg:max-h-[80vh] w-auto rounded-full object-cover opacity-90 0mask-radial-from-70%" />
+        <div id="hero-img-wrapper" class="max-md:w-full flex justify-center items-center">
+          <img data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" id="hero-img" src="./media/hero_logo.png" alt="hero image" class="max-sm:max-h-[40vh] h-auto lg:max-h-[80vh] w-auto rounded-full object-cover opacity-90 0mask-radial-from-70%" />
         </div>
       </div>
     </section>
@@ -157,11 +146,11 @@
           <h2 class="w-full text-center text-[10vw] font-en-heading font-semibold uppercase leading-none">Experience</h2>
         </div>
         <!-- Timeline -->
-        <div id="timeline" class="relative w-full max-w-[90vw] h-full overflow-y-auto scrollbar-none mask-t-from-95%">
+        <div id="timeline" class="relative w-full max-w-[90vw] h-full overflow-y-auto scrollbar-none mask-y-from-98% mask-y-to-100%">
           <!-- Mid line -->
           <div id="timeline-line" class="w-px absolute h-screen -z-10 top-0 left-1/2 -translate-x-1/2 bg-white/50"></div>
           <!-- Group -->
-          <div id="card-group" class="flex flex-col items-center gap-40 relative mask-t-from-98% mask-t-to-100%"></div>
+          <div id="card-group" class="flex flex-col items-center gap-40 relative"></div>
         </div>
       </div>
     </section>
@@ -187,7 +176,7 @@
 
     <!--!------------------ Projects ------------------!-->
 
-    <section id="projects" class="w-full h-[300dvh] 0mt-[100dvh] relative">
+    <section id="projects" class="w-full h-[300dvh] relative">
       <div class="w-full h-screen sticky top-0 flex flex-col justify-center items-center overflow-hidden">
         <!-- Header -->
         <div id="header" class="w-screen top-0 flex flex-col justify-center items-center">
@@ -195,14 +184,27 @@
         </div>
         <!-- Content -->
         <div id="content" class="w-full h-full z-10 flex justify-center items-center overflow-hidden">
-          <div id="ring" class="p-2.5 lg:p-10 h-full flex items-center gap-20 scrollbar-fit scrollbar-none hover:scrollbar-view overflow-x-auto"></div>
+          <div id="ring" class="p-2.5 lg:p-10 h-full flex items-center gap-20 scrollbar-fit scrollbar-none hover:!scrollbar-view overflow-x-auto"></div>
         </div>
+      </div>
+    </section>
+
+    <!--!------------------ Recommendations ------------------!-->
+
+    <section id="recommendations" class="w-full h-[300dvh] 0mt-[100dvh] relative">
+      <div class="w-full h-screen sticky top-0 flex flex-col justify-center items-center overflow-hidden">
+        <!-- Header -->
+        <div id="header" class="w-screen top-0 flex flex-col justify-center items-center">
+          <h1 class="text-[10vw] lg:text-[15vw] font-en-heading font-semibold uppercase tracking-widest opacity-30 leading-none">Recommendations</h1>
+        </div>
+        <!-- Content -->
+        <div id="content" class="w-full h-full z-10 flex justify-center items-center overflow-hidden"></div>
       </div>
     </section>
 
     <!--!------------------ More ------------------!-->
 
-    <!-- <section id="more" class="w-full h-screen relative"></section> -->
+    <section id="more" class="w-full h-screen relative"></section>
 
     <!--!------------------ Scripts ------------------!-->
 

@@ -1,15 +1,15 @@
 const projects = [
   {
-    title: "Sales Automation system Implementation and lunch",
+    title: "Sales Automation system Implementation and launch",
     date: "February 2025 - June 2025",
     company: "Madar Group Egypt",
     companyLogo: "https://media.licdn.com/dms/image/v2/C4E0BAQHDNAE8SGfXAQ/company-logo_100_100/company-logo_100_100/0/1631343569269",
-    description: "create the system cycle based on the AS IS analysis\nadjust the reporting system to fit the ERP (in-out)\nLunch Suremdm mob Control over all devices \nCreate an internal SOP for the sales cycle \nAdjust the customer creation model to expand the customer DB \nTrain all staff on the system cycle and models \nIntegrate the DB to Power BI and create a business Dashboard",
+    description: "create the system cycle based on the AS IS analysis\nadjust the reporting system to fit the ERP (in-out)\nLaunch Suremdm mob Control over all devices \nCreate an internal SOP for the sales cycle \nAdjust the customer creation model to expand the customer DB \nTrain all staff on the system cycle and models \nIntegrate the DB to Power BI and create a business Dashboard",
     skills: ["Project Delivery", "Project Implementation", "Reporting & Analysis", "User Training", "Business Analysis", "Business Applications"],
     link: null
   },
   {
-    title: "Salesbuzz - Sales Automation system implementation and lunch",
+    title: "Salesbuzz - Sales Automation system implementation and launch",
     date: "February 2025 - June 2025",
     company: "Madar Group Egypt",
     companyLogo: "https://media.licdn.com/dms/image/v2/C4E0BAQHDNAE8SGfXAQ/company-logo_100_100/company-logo_100_100/0/1631343569269",
@@ -94,7 +94,7 @@ const projects = [
     date: "April 2022 - September 2022",
     company: "BI-Technologies",
     companyLogo: "https://media.licdn.com/dms/image/v2/D4D0BAQF9n4uP3KQWCw/company-logo_100_100/company-logo_100_100/0/1708422160938/bi_technologiesnet_logo",
-    description: "lunching White tissue DMS with sales buzz system",
+    description: "launching White tissue DMS with sales buzz system",
     skills: [],
     link: "https://www.facebook.com/White.Tissues.EG/"
   },
@@ -103,7 +103,7 @@ const projects = [
     date: "March 2022 - December 2022",
     company: "BI-Technologies",
     companyLogo: "https://media.licdn.com/dms/image/v2/D4D0BAQF9n4uP3KQWCw/company-logo_100_100/company-logo_100_100/0/1708422160938/bi_technologiesnet_logo",
-    description: "lunching multiple projects with Oracle integration with sales buzz using a modern dispatching system and warehouse transactions and golden points tracking system. \nproviding better access to the market along with stronger forecasting of the market",
+    description: "launching multiple projects with Oracle integration with sales buzz using a modern dispatching system and warehouse transactions and golden points tracking system. \nproviding better access to the market along with stronger forecasting of the market",
     skills: [],
     link: "http://www.speed.com.eg/default/"
   },
@@ -112,7 +112,7 @@ const projects = [
     date: "January 2022 - August 2022",
     company: "Informatique",
     companyLogo: "https://media.licdn.com/dms/image/v2/C4E0BAQFSXFbElmLLQA/company-logo_100_100/company-logo_100_100/0/1631323211486",
-    description: "implement and lunching Alsalam university using the modern SIS system to handle all the university needs with functionality from admission to graduation,\nhandling Grade marking and exams and lectures organisation and financial transaction rater on-premises or online or through bank transfer.",
+    description: "implement and launching Alsalam university using the modern SIS system to handle all the university needs with functionality from admission to graduation,\nhandling Grade marking and exams and lectures organisation and financial transaction rater on-premises or online or through bank transfer.",
     skills: [],
     link: "http://sis.sue.edu.eg/"
   },

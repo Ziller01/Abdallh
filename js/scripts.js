@@ -162,26 +162,22 @@ if (_experiences) {
 
     const timelineLine = document.querySelector("#experiences #timeline-line");
 
+    timelineLine.style.height = `${experiencesCardGroup.offsetHeight}px`;
+    window.addEventListener('resize', () => { timelineLine.style.height = `${experiencesCardGroup.offsetHeight}px`; })
+
     let experiences_tl = gsap.timeline({
         scrollTrigger: {
             trigger: '#experiences',
             end: 'bottom 50%',
             scrub: 1,
             // markers: true,
-            onEnter: () => {
-                timelineLine.classList.remove('h-screen');
-                timelineLine.style.height = `${experiencesCardGroup.offsetHeight}px`;
-            },
-            onEnterBack: () => {
-                timelineLine.style.height = `${experiencesCardGroup.offsetHeight}px`;
-            }
         }
     });
 
     experiences_tl
-        .to('#experiences #header h2', { letterSpacing: '0.2em', color: 'rgba(255,255,255,0.25)' })
-        .from('#experiences #timeline', { y: '100%', overflow: 'hidden' })
-        .to('#experiences #timeline', { y: 0, overflow: 'auto' })
+        .to('#experiences #header h2', { letterSpacing: '0.2em', color: 'rgba(255,255,255,0.25)' }, 0)
+        .from('#experiences #timeline', { y: '100%', overflow: 'hidden' }, "myLabel>+=1")
+        .to('#experiences #timeline', { y: 0, overflow: 'auto' }, "myLabel+=1")
 }
 
 //------------------------------------------------------ Skills
@@ -246,7 +242,7 @@ if (_skills) {
             const screenY = this.y * scale + space_canvas.height / 2;
 
             ctx.beginPath();
-            ctx.arc(screenX, screenY, this.radius * (scale / 2), 0, Math.PI * 2);
+            ctx.arc(screenX, screenY, 0.5, 0, Math.PI * 2);
             ctx.fillStyle = 'white';
             ctx.fill();
         }
@@ -312,7 +308,9 @@ if (_skills) {
 
         // parent
         const point = document.createElement("div");
-        point.className = `absolute cursor-pointer opacity-20 min-w-fit w-0 hover:opacity-100 whitespace-nowrap hover:w-[3000px] max-w-fit flex justify-center items-center group p-2 border duration-300 overflow-hidden rounded-full`;
+        point.className = `absolute z-10 cursor-pointer opacity-20 min-w-fit w-0 active:opacity-100 hover:opacity-100 whitespace-nowrap max-w-fit flex justify-center items-center group p-2 border duration-300 overflow-hidden rounded-full`;
+
+        // direction
         if (x > 50) point.dir = "rtl";
 
         // random position
@@ -326,7 +324,7 @@ if (_skills) {
 
         // text
         const p = document.createElement("p");
-        p.className = "opacity-0 w-0 max-w-0 group-hover:w-[1000px] group-hover:max-w-fit group-hover:opacity-100 group-hover:ms-2 duration-300 leading-0";
+        p.className = "opacity-0 w-0 max-w-0 group-hover:w-[1000px] group-active:w-[1000px] group-hover:max-w-fit group-active:max-w-fit group-hover:opacity-100 group-active:opacity-100 group-hover:ms-2 group-active:ms-2 duration-300 leading-0";
         p.textContent = skill;
 
         point.appendChild(p);

@@ -75,7 +75,7 @@
     .scrollbar-view::-webkit-scrollbar {
         display: block;
     }
-    
+
     .scrollbar-none::-webkit-scrollbar {
         display: none;
     }
