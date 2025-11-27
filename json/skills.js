@@ -1,4 +1,4 @@
-const mainSkills = [
+const mainSkills = [  // -> 14
   "Business Analysis",
   "Project Management",
   "Sales Automation (Salesbuzz)",
@@ -13,7 +13,7 @@ const mainSkills = [
   "Soft Skills"
 ];
 
-const allSkills = [
+const allSkills = [ // -> 115
   "Training Delivery",
   "Reporting & Analysis",
   "Software Configuration Management",
